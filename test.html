@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Buddy - Local Tester</title>
+  <link rel="stylesheet" href="content/content.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 50px;
+      background-color: #f0f2f5;
+    }
+    .controls {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      cursor: pointer;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls">
+    <h2>🧪 Local UI Tester</h2>
+    <p>Click the buttons below to simulate extension reminders:</p>
+    <button onclick="showReminder('hydration')">💧 Simulate Water Break</button>
+    <button onclick="showReminder('eyeRest')">👀 Simulate Eye Break</button>
+    <button onclick="showReminder('posture')">🧍 Simulate Posture Check</button>
+  </div>
+
+  <!-- Mock Chrome API so content.js doesn't crash -->
+  <script>
+    window.chrome = {
+      runtime: {
+        sendMessage: function(msg) {
+          console.log("Mock Chrome API received message:", msg);
+        },
+        onMessage: {
+          addListener: function() {}
+        }
+      }
+    };
+  </script>
+
+  <!-- Load the actual extension scripts -->
+  <script src="content/content.js"></script>
+</body>
+</html>

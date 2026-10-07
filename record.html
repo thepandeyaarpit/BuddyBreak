@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      margin: 0; padding: 0;
+      background: white;
+      display: flex; justify-content: center; align-items: center;
+      height: 100vh; overflow: hidden;
+    }
+    #health-buddy-character {
+      width: 500px; height: 500px;
+      background-image: url('file:///C:/Users/Planet/.gemini/antigravity-ide/brain/9e2111b1-45ca-4bdf-9cb4-ec3ac10796a3/boy_board_up_idle_1791273292038.jpg');
+      background-size: cover; background-position: center;
+      animation: walkIn 1.5s ease-out forwards;
+    }
+    @keyframes walkIn {
+      0% { transform: translateX(-800px) rotate(-10deg); }
+      20% { transform: translateX(-500px) rotate(10deg); }
+      40% { transform: translateX(-300px) rotate(-8deg); }
+      60% { transform: translateX(-150px) rotate(8deg); }
+      80% { transform: translateX(-50px) rotate(-4deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="health-buddy-character"></div>
+</body>
+</html>

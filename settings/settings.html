@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Health Buddy Settings</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f5f5f5; color: #333; margin: 0; padding: 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    h1 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+    .section { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+    .section:last-child { border-bottom: none; }
+    .setting-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .setting-title { font-weight: bold; margin-bottom: 5px; }
+    .setting-desc { font-size: 13px; color: #666; }
+    select, input[type="time"] { padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
+    
+    /* Toggle switch */
+    .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 26px; }
+    .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+    input:checked + .slider { background-color: #4CAF50; }
+    input:checked + .slider:before { transform: translateX(24px); }
+    
+    .save-btn { background: #4CAF50; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; width: 100%; transition: 0.2s; }
+    .save-btn:hover { background: #45a049; }
+    
+    .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 10px 20px; border-radius: 8px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>👦 Health Buddy Settings</h1>
+    
+    <div class="section">
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">💧 Hydration Reminders</div>
+          <div class="setting-desc">Remind you to drink water.</div>
+        </div>
+        <div>
+          <select id="hyd-int"><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option></select>
+          <label class="switch"><input type="checkbox" id="hyd-en"><span class="slider"></span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">👀 Eye Rest Reminders</div>
+          <div class="setting-desc">20-20-20 rule for your eyes.</div>
+        </div>
+        <div>
+          <select id="eye-int"><option value="20">20 min</option><option value="30">30 min</option><option value="45">45 min</option></select>
+          <label class="switch"><input type="checkbox" id="eye-en"><span class="slider"></span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">🧍 Posture Checks</div>
+          <div class="setting-desc">Remind you to sit up straight.</div>
+        </div>
+        <div>
+          <select id="pos-int"><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option></select>
+          <label class="switch"><input type="checkbox" id="pos-en"><span class="slider"></span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">🚶 Movement Breaks</div>
+          <div class="setting-desc">Time to stretch those legs.</div>
+        </div>
+        <div>
+          <select id="mov-int"><option value="45">45 min</option><option value="60">60 min</option><option value="90">90 min</option></select>
+          <label class="switch"><input type="checkbox" id="mov-en"><span class="slider"></span></label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <div class="setting-title">🌙 Quiet Hours</div>
+      <div class="setting-desc" style="margin-bottom:10px;">Pause reminders during these times.</div>
+      <div class="setting-row">
+        <label class="switch"><input type="checkbox" id="quiet-en"><span class="slider"></span></label>
+        <div>
+          Start: <input type="time" id="quiet-start"> 
+          End: <input type="time" id="quiet-end">
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <div class="setting-title">🛑 I'm Busy</div>
+      <div class="setting-desc" style="margin-bottom:10px;">Pause all reminders temporarily.</div>
+      <div>
+        <button id="btn-busy-30" style="padding:8px; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer;">30 min</button>
+        <button id="btn-busy-60" style="padding:8px; border-radius:6px; border:1px solid #ccc; background:#fff; cursor:pointer;">1 hour</button>
+        <button id="btn-busy-clear" style="padding:8px; border-radius:6px; border:1px solid #f44336; background:#ffebee; color:#f44336; cursor:pointer; display:none;">Resume Now</button>
+      </div>
+      <div id="busy-status" style="margin-top:10px; font-size:13px; color:#E65100;"></div>
+    </div>
+
+    <button class="save-btn" id="save-btn">Save Settings</button>
+  </div>
+  
+  <div id="toast" class="toast">Settings Saved!</div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

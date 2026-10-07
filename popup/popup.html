@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Health Buddy</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="avatar">👦</div>
+    <div>
+      <h2 style="margin:0; font-size:16px;">Health Buddy</h2>
+      <div id="greeting" style="font-size:12px; color:#666;">Good day! 🌤️</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Today's Progress</div>
+    
+    <div class="stat-row">
+      <span>💧 Water</span>
+      <span id="stat-water">0 / 0</span>
+    </div>
+    <div class="progress-bar"><div id="prog-water" class="progress-fill" style="width:0%; background:#2196F3;"></div></div>
+    
+    <div class="stat-row">
+      <span>👀 Eye Rest</span>
+      <span id="stat-eyeRest">0 / 0</span>
+    </div>
+    <div class="progress-bar"><div id="prog-eyeRest" class="progress-fill" style="width:0%; background:#4CAF50;"></div></div>
+    
+    <div class="stat-row">
+      <span>🧍 Posture</span>
+      <span id="stat-posture">0 / 0</span>
+    </div>
+    <div class="progress-bar"><div id="prog-posture" class="progress-fill" style="width:0%; background:#FF9800;"></div></div>
+    
+    <div class="stat-row">
+      <span>🚶 Movement</span>
+      <span id="stat-movement">0 / 0</span>
+    </div>
+    <div class="progress-bar"><div id="prog-movement" class="progress-fill" style="width:0%; background:#9C27B0;"></div></div>
+  </div>
+
+  <div class="streak">
+    🔥 <span id="streak-count">0</span> Day Streak!
+  </div>
+
+  <div class="actions">
+    <button id="btn-take-break" class="btn btn-primary">Take a Break Now</button>
+    <button id="btn-settings" class="btn btn-outline">Settings ⚙️</button>
+  </div>
+  
+  <div id="manual-break-options" style="display:none; margin-top:10px;">
+    <button class="btn btn-break" data-type="hydration">💧 Drink Water</button>
+    <button class="btn btn-break" data-type="eyeRest">👀 Eye Break</button>
+    <button class="btn btn-break" data-type="posture">🧍 Fix Posture</button>
+    <button class="btn btn-break" data-type="movement">🚶 Move Around</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

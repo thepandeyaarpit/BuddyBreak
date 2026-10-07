@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Health Buddy",
+  "version": "1.0",
+  "description": "Your tiny health-conscious friend who works beside you.",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "options_page": "settings/settings.html",
+  "commands": {
+    "take-a-break": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+B",
+        "mac": "Command+Shift+B"
+      },
+      "description": "Trigger a Health Buddy break"
+    }
+  },
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["content/content.css"],
+      "js": ["content/content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["gemini_generated_video_9695d240.mp4"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
